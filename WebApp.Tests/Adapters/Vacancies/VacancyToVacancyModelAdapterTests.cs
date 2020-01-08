@@ -30,7 +30,7 @@ namespace WebApp.Tests.Adapters
         }
 
         [Test]
-        public void Fill_UseCaseCustomer_ReturnsFullModel()
+        public void Fill_UseCaseCustomer_ReturnsModel()
         {
             var resultModel = new VacancyModel() { JobDescription = new JobDescriptionModel() };
             var origin = new Vacancy() { Reference = "ref-1", CreationDate = DateTime.Now, AgencyComment = "A comment", JobDescription = new JobDescription() };

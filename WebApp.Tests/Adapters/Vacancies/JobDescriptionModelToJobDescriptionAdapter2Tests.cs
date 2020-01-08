@@ -12,12 +12,12 @@ using WebApp.Models;
 
 namespace WebApp.Tests.Adapters
 {
-    public class JobDescriptionModelToJobDescriptionAdapterTests
+    public class JobDescriptionModelToJobDescriptionAdapter2Tests
     {
         private Mock<IAdapterFactoryService> _adapterFactoryService;
         private Mock<IMappingPredicateProvider> _mappingPredicateProvider;
         private Mock<IIdToCodeConverterService> _idConverterService;
-        private JobDescriptionModelToJobDescriptionAdapter _adapterToTest;
+        private JobDescriptionModelToJobDescriptionAdapter2 _adapterToTest;
 
         [SetUp]
         public void Setup()
@@ -25,7 +25,7 @@ namespace WebApp.Tests.Adapters
             _adapterFactoryService = new Mock<IAdapterFactoryService>();
             _mappingPredicateProvider = new Mock<IMappingPredicateProvider>();
             _idConverterService = new Mock<IIdToCodeConverterService>();
-            _adapterToTest = new JobDescriptionModelToJobDescriptionAdapter(_adapterFactoryService.Object, _mappingPredicateProvider.Object, _idConverterService.Object);
+            _adapterToTest = new JobDescriptionModelToJobDescriptionAdapter2(_adapterFactoryService.Object, _mappingPredicateProvider.Object, _idConverterService.Object);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace WebApp.Tests.Adapters
             var origin = new JobDescriptionModel() { ContractCode = "1", Description = "desc", JobTitle = "title" };
 
             _mappingPredicateProvider.Setup(m => m.GetPredicate<JobDescriptionModel>()).Returns(FakeMappingPredicateProvider.GetPredicate<JobDescriptionModel>(Business.UseCase.UseCases.Customer));
-            _idConverterService.Setup(m => m.GetId<Contract>(origin.ContractCode)).Returns(1);
+            _idConverterService.Setup(m => m.GetId(It.IsAny<string>(), origin.ContractCode)).Returns(1);
 
             _adapterToTest.Fill(resultModel, origin);
 
@@ -51,7 +51,7 @@ namespace WebApp.Tests.Adapters
             var origin = new JobDescriptionModel() { ContractCode = "1", Description = "desc", JobTitle = "title" };
 
             _mappingPredicateProvider.Setup(m => m.GetPredicate<JobDescriptionModel>()).Returns(FakeMappingPredicateProvider.GetPredicate<JobDescriptionModel>(Business.UseCase.UseCases.Customer));
-            _idConverterService.Setup(m => m.GetId<Contract>(origin.ContractCode)).Throws<ArgumentNullException>();
+            _idConverterService.Setup(m => m.GetId(origin.ContractCode)).Throws<ArgumentNullException>();
 
             _adapterToTest.Fill(resultModel, origin);
 
@@ -61,7 +61,7 @@ namespace WebApp.Tests.Adapters
         }
 
         [Test]
-        public void Fill_UseCaseJobBoard_ReturnsModel()
+        public void Fill_UseCaseJobBoard_ReturnsFullModel()
         {
             var resultModel = new JobDescription() { ContractId = 2 };
             var origin = new JobDescriptionModel() { ContractCode = "1", Description = "desc", JobTitle = "title" };
@@ -69,7 +69,7 @@ namespace WebApp.Tests.Adapters
             _mappingPredicateProvider
                 .Setup(m => m.GetPredicate<JobDescriptionModel>())
                 .Returns(FakeMappingPredicateProvider.GetPredicate<JobDescriptionModel>(Business.UseCase.UseCases.JobBoard));
-            _idConverterService.Setup(m => m.GetId(origin.ContractCode)).Returns(1);
+            _idConverterService.Setup(m => m.GetId(It.IsAny<string>(), origin.ContractCode)).Returns(1);
 
             _adapterToTest.Fill(resultModel, origin);
 
