@@ -198,6 +198,14 @@
     <Compile Include="Authorization\CustomOAuthProvider.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\JobBoard.VacanciesController.cs" />
+    <Compile Include="Documentation\Contracts\IPropertiesInfoProvider.cs" />
+    <Compile Include="Documentation\Contracts\ISwaggerDocInspectionService.cs" />
+    <Compile Include="Documentation\Contracts\IUseCaseExtractorService.cs" />
+    <Compile Include="Documentation\Services\PropertiesInfoProvider.cs" />
+    <Compile Include="Documentation\Services\SwaggerDocInspectionService.cs" />
+    <Compile Include="Documentation\Services\UseCaseExtractorService.cs" />
+    <Compile Include="Documentation\SwaggerFilter.cs" />
+    <Compile Include="Documentation\VersionResolver.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
