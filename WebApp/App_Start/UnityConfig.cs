@@ -4,8 +4,9 @@ using System;
 
 using Unity;
 using Unity.AspNet.Mvc;
-using Unity.Lifetime;
 using WebApp.Adapters;
+using WebApp.Documentation.Contracts;
+using WebApp.Documentation.Services;
 using WebApp.Services;
 
 namespace WebApp
@@ -28,6 +29,7 @@ namespace WebApp
         /// Configured Unity Container.
         /// </summary>
         public static IUnityContainer Container => container.Value;
+
         #endregion
 
         /// <summary>
@@ -54,6 +56,10 @@ namespace WebApp
             container.RegisterType(typeof(IApiRequestContext), typeof(ApiRequestContext), new PerRequestLifetimeManager());
             container.RegisterType(typeof(IVacancyService), typeof(VacancyService));
             container.RegisterType(typeof(IMappingPredicateProvider), typeof(MappingPredicateProvider));
+
+            container.RegisterType(typeof(IUseCaseExtractorService), typeof(UseCaseExtractorService));
+            container.RegisterType(typeof(IPropertiesInfoProvider), typeof(PropertiesInfoProvider));
+            container.RegisterType(typeof(ISwaggerDocInspectionService), typeof(SwaggerDocInspectionService));
         }
     }
 }
