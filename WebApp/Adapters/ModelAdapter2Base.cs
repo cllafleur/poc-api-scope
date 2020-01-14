@@ -34,6 +34,10 @@ namespace WebApp.Adapters
                     action();
                 }
             }
+            catch (Exception exc)
+            {
+                Errors.Add(new ValidationResult(exc.Message, new[] { _currentPropertyName }));
+            }
             finally
             {
                 _currentPropertyName = string.Empty;

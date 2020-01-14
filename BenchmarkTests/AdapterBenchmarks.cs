@@ -16,9 +16,9 @@ namespace BenchmarkTests
         {
             var tests = new JobDescriptionModelToJobDescriptionAdapter2Tests();
             tests.Setup();
-            tests.Fill_UseCaseCustomer_ReturnsModel();
-            tests.Fill_UseCaseCustomer_ReturnsModel();
-            tests.Fill_UseCaseCustomer_ReturnsModel();
+            tests.Fill_UseCaseCustomer_ReturnsModel2();
+            tests.Fill_UseCaseCustomer_ReturnsModel2();
+            tests.Fill_UseCaseCustomer_ReturnsModel2();
         }
 
         [Benchmark]
@@ -26,9 +26,9 @@ namespace BenchmarkTests
         {
             var tests = new JobDescriptionModelToJobDescriptionAdapter2Tests();
             tests.Setup();
-            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel();
-            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel();
-            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel();
+            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel2();
+            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel2();
+            tests.Fill_UseCaseCustomer_ContractThrowsException_ReturnsModel2();
         }
 
 
