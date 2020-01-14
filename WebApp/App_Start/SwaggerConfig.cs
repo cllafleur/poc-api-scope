@@ -1,7 +1,7 @@
+using System;
 using System.Web.Http;
-using WebActivatorEx;
-using WebApp;
 using Swashbuckle.Application;
+using WebApp.Documentation;
 
 namespace WebApp
 {
@@ -10,6 +10,8 @@ namespace WebApp
         public static void Register(HttpConfiguration configuration)
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;
+
+            var versionResolver = new VersionResolver();
 
             configuration
                 .EnableSwagger("api/documentation/{apiVersion}/swagger", c =>
@@ -34,20 +36,25 @@ namespace WebApp
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
-                        //c.PrettyPrint();
+                        c.PrettyPrint();
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
                         // included in the docs for a given API version. Like "SingleApiVersion", each call to "Version"
                         // returns an "Info" builder so you can provide additional metadata per API version.
                         //
-                        //c.MultipleApiVersions(
-                        //    (apiDesc, targetApiVersion) => ResolveVersionSupportByRouteConstraint(apiDesc, targetApiVersion),
-                        //    (vc) =>
-                        //    {
-                        //        vc.Version("v2", "Swashbuckle Dummy API V2");
-                        //        vc.Version("v1", "Swashbuckle Dummy API V1");
-                        //    });
+                        c.MultipleApiVersions(
+                            (apiDesc, targetApiVersion) => versionResolver.ResolveVersionSupportByRouteConstraint(apiDesc, targetApiVersion),
+                            (vc) =>
+                            {
+                                vc.Version("v1", "Recruiting Customer API");
+                                vc.Version("Alfredv1", "internal recruiting Alfred api");
+                                vc.Version("privatev1", "Internal Recruiting API");
+                                foreach (var usecase in Enum.GetValues(typeof(Business.UseCase.UseCases)))
+                                {
+                                    vc.Version($"{usecase}v1", $"Recruiting {usecase} API");
+                                }
+                            });
 
                         // You can use "BasicAuth", "ApiKey" or "OAuth2" options to describe security schemes for the API.
                         // See https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md for more details.
@@ -161,7 +168,7 @@ namespace WebApp
                         // the Swagger 2.0 spec. - https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md
                         // before using this option.
                         //
-                        //c.DocumentFilter<ApplyDocumentVendorExtensions>();
+                        c.DocumentFilter<SwaggerFilter>();
 
                         // In contrast to WebApi, Swagger 2.0 does not include the query string component when mapping a URL
                         // to an action. As a result, Swashbuckle will raise an exception if it encounters multiple actions
@@ -251,5 +258,7 @@ namespace WebApp
                         //c.EnableApiKeySupport("apiKey", "header");
                     });
         }
+
+      
     }
 }
