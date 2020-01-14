@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
@@ -24,7 +25,14 @@ namespace WebApp.Adapters
         {
             if (predicate(propertyName))
             {
-                action();
+                try
+                {
+                    action();
+                }
+                catch (Exception ex)
+                {
+                    Errors.Add(new ValidationResult(ex.Message, new[] { propertyName }));
+                }
             }
         }
 

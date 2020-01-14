@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Tests", "WebApp.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{FD8B8189-5C9B-46F3-A7F2-6252BD9C65BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenchmarkTests", "BenchmarkTests\BenchmarkTests.csproj", "{27571E07-CA8A-47C4-A3E6-86E8F1D8995F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +29,16 @@ Global
 		{FD8B8189-5C9B-46F3-A7F2-6252BD9C65BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD8B8189-5C9B-46F3-A7F2-6252BD9C65BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD8B8189-5C9B-46F3-A7F2-6252BD9C65BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27571E07-CA8A-47C4-A3E6-86E8F1D8995F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27571E07-CA8A-47C4-A3E6-86E8F1D8995F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27571E07-CA8A-47C4-A3E6-86E8F1D8995F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27571E07-CA8A-47C4-A3E6-86E8F1D8995F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
 		SolutionGuid = {2A2D87D1-6260-4477-BAA3-43BFC79CB960}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
 	EndGlobalSection
 EndGlobal

@@ -180,7 +180,9 @@
     <Compile Include="Adapters\ApiModelAdapterBase.cs" />
     <Compile Include="Adapters\IAdapterFactoryService.cs" />
     <Compile Include="Adapters\IMappingPredicateProvider.cs" />
+    <Compile Include="Adapters\ModelAdapter2Base.cs" />
     <Compile Include="Adapters\ModelAdapterBase.cs" />
+    <Compile Include="Adapters\Vacancies\JobDescriptionModelToJobDescriptionAdapter2.cs" />
     <Compile Include="Adapters\Vacancies\JobDescriptionModelToJobDescriptionAdapter.cs" />
     <Compile Include="Adapters\AdapterBase.cs" />
     <Compile Include="Adapters\IAdapter.cs" />
