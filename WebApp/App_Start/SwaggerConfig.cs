@@ -1,5 +1,6 @@
 using System;
 using System.Web.Http;
+using Newtonsoft.Json;
 using Swashbuckle.Application;
 using WebApp.Documentation;
 
@@ -9,8 +10,6 @@ namespace WebApp
     {
         public static void Register(HttpConfiguration configuration)
         {
-            var thisAssembly = typeof(SwaggerConfig).Assembly;
-
             var versionResolver = new VersionResolver();
 
             configuration
