@@ -42,9 +42,9 @@ namespace WebApp.Adapters
             return _container.Resolve(adapterType);
         }
 
-        private IAdapter<Tmodel, Tsource> GetAdapterInternal<Tmodel, Tsource>()
+        private IAdapter<TModel, TSource> GetAdapterInternal<TModel, TSource>()
         {
-            return _container.Resolve<IAdapter<Tmodel, Tsource>>();
+            return _container.Resolve<IAdapter<TModel, TSource>>();
         }
     }
 }

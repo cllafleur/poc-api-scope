@@ -15,5 +15,15 @@ namespace Business.Services
         {
             return new Random().Next();
         }
+
+        public int? GetId(string tableName, string code)
+        {
+            return new Random().Next();
+        }
+
+        public int? GetId<T>(string code)
+        {
+            return new Random().Next();
+        }
     }
 }
